@@ -4,10 +4,10 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity(), FragmentListener {
 
     private val fragmentAdapter = FragmentAdapter(supportFragmentManager)
+    private lateinit var notificationUtils: NotificationUtils
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +21,11 @@ class MainActivity : AppCompatActivity(), FragmentListener {
     }
 
     override fun onCreateNotificationClick(number: Int) {
-       TODO()
+        notificationUtils.showNotification(number)
     }
 
     override fun onMinusClick() {
+        notificationUtils.removeNotifications(fragmentAdapter.count)
         fragmentAdapter.removeFragmentAt(fragmentAdapter.count - 1)
         viewPager.currentItem = fragmentAdapter.count
     }
@@ -39,10 +40,17 @@ class MainActivity : AppCompatActivity(), FragmentListener {
     }
 
     private fun initViewPager(number: Int) {
-        addFragment() // fragment with number "1"
+        addFragment() // initial fragment
+        if (number != -1) {
+            (1 until number).forEach { _ ->
+                addFragment()
+            }
+            viewPager.currentItem = number
+        }
     }
 
     private fun setupUI() {
+        notificationUtils = NotificationUtils(this)
         viewPager.adapter = fragmentAdapter
     }
 
