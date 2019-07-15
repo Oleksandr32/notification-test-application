@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<FrameLayout
+		android:id="@+id/createNotificationButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="?selectableItemBackgroundBorderless"
+		android:clickable="true"
+		android:focusable="true"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.35">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@drawable/background_oval"
+			android:gravity="center"
+			android:text="@string/create_new_notification"
+			android:textAppearance="@style/TextAppearance.AppCompat.Title"
+			android:textColor="@color/colorText" />
+	</FrameLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginBottom="24dp"
+		android:background="@drawable/background_rectangle"
+		android:orientation="horizontal"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
+
+		<ImageButton
+			android:id="@+id/minusButton"
+			android:layout_width="56dp"
+			android:layout_height="56dp"
+			android:background="@drawable/background_circle"
+			android:foreground="?selectableItemBackground"
+			android:src="@drawable/minus"
+			android:visibility="invisible" />
+
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="0dp"
+			android:layout_weight="1" />
+
+		<TextView
+			android:id="@+id/numberTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+			android:textColor="?colorAccent" />
+
+		<View
+			android:layout_width="wrap_content"
+			android:layout_height="0dp"
+			android:layout_weight="1" />
+
+		<ImageButton
+			android:id="@+id/plusButton"
+			android:layout_width="56dp"
+			android:layout_height="56dp"
+			android:background="@drawable/background_circle"
+			android:foreground="?selectableItemBackground"
+			android:src="@drawable/plus" />
+	</LinearLayout>
+</android.support.constraint.ConstraintLayout>
